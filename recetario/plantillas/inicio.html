@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% comment %} aqui van los comentarios {%endcomment%}
+{% block titulo%} Inicio {%endblock%}
+
+{% block style_css %}
+	.impar{backgroud-color:#90ee90}
+	.par{background-color:#5acc5a}
+{% endblock %}
+
+{% block encabezado %}
+	<h1>Recetario</h1>
+{% endblock %}
+{% block contenido %}
+	<p>
+		Actualmente tenmos registrado
+		{% with total=recetas.count %}
+			{{total}} receta{{total|pluralize}}
+		{% endwith %}
+	</p>
+	<ul> 
+		{% for dato in recetas %}
+		<li class="{% cycle 'impar' 'par'%}" >{{ dato.titulo }}</li>
+		{% empty%}
+		<li>No hay receta aun en el recetario</li>
+		{% endfor %}
+	</ul>
+{% endblock %}
+<!--
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Recetas</title>
+</head>
+<body>
+	<header>
+		<nav>
+			<ul>
+				<li><a href="/">Inicio</a></li>
+				<li><a href="/usuarios">Usuarios</a></li>
+				<li><a href="/recetas">Recetas</a></li>
+				<li><a href="/sobre">Sobre</a></li>
+			</ul>
+		</nav>
+	</header>
+	<section>
+		<h1>Recetario :)</h1>
+		<p>actualmente tenemos en el recetario</p>
+		
+	</section>
+</body>
+</html>-->

@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% comment %} aqui van los comentarios {%endcomment%}
+{% block titulo%} Recetas {%endblock%}
+
+{% block style_css %}
+	img{width: 100px}
+{% endblock %}
+
+{% block encabezado %}
+	<h1>Nuestras Recetas</h1>
+{% endblock %}
+
+{% block contenido %}
+<ul>
+	{%for dato in datos%}
+	<li>
+		<a href="{%url principal.views.detalle_receta dato.id%}">{{dato.titulo}}</a>
+		<img src="{{MEDIA_URL}}{{dato.imagen}}">
+	</li>
+	{%empty%}
+	<li> Aun no hay recetas registradas</li>
+	{%endfor%}
+</ul>
+
+<a href="/receta/nueva">Agregar una receta</a>
+{% endblock %}
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Recetas</title>
+</head>
+<body>
+	<header>
+		<nav>
+			<ul>
+				<li><a href="/">Inicio</a></li>
+				<li><a href="/usuarios">Usuarios</a></li>
+				<li><a href="/recetas">Recetas</a></li>
+				<li><a href="/sobre">Sobre</a></li>
+			</ul>
+		</nav>
+	</header>
+	<section>
+		<h1>Recetas</h1>
+	</section>
+</body>
+</html>

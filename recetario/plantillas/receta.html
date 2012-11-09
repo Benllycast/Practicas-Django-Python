@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% comment %} aqui van los comentarios {%endcomment%}
+{% block titulo%} {{receta.titulo}} {%endblock%}
+{% block style_css %}
+	.impar{backgroud-color:#90ee90}
+	.par{background-color:#5acc5a}
+{% endblock %}
+{% block encabezado %}
+	<h1>{{receta.titulo|title}}</h1>
+{% endblock %}
+{% block contenido %}
+	
+<div id="ingredites">
+	<h2>Ingredientes</h2>
+	<p>{{receta.ingredientes}}</p>
+</div>
+<div id="preparacion">
+	<h2>preparacion</h2>
+	<p>{{receta.preparacion}}</p>
+</div>
+<div id="referencia">
+	<img alt="referencia" src="{{MEDIA_URL}}{{receta.imagen}}">
+</div>
+<div id="comentarios">
+	{% for item in comentarios%}
+	<p>{{item.texto}}</p>
+	{% empty %}
+	<p>sin comentarios registrados</p>
+	{%endfor%}
+</div>
+<footer><p>Registrado: {{receta.tiempo_registro|date:'SHORT_DATETIME_FORMAT'}} por {{receta.usuario}}</p></footer>
+{% endblock %}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Recetas</title>
+</head>
+<body>
+	<header>
+		<nav>
+			<ul>
+				<li><a href="/">Inicio</a></li>
+				<li><a href="/usuarios">Usuarios</a></li>
+				<li><a href="/recetas">Recetas</a></li>
+				<li><a href="/sobre">Sobre</a></li>
+			</ul>
+		</nav>
+	</header>
+	<section>
+		<h1>{{receta.titulo}}</h1>
+	</section>
+</body>
+</html>

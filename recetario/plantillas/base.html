@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="ISO-8859-1">
+        <title>Recetario para MDW- {%block titulo %}{% endblock %}</title>
+        <style type="text/css">{% block style_css %}{% endblock %}</style>
+        <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/base.css">
+        <link rel="shortcut icon" href="{{STATIC_URL}}image/image.png">
+        {%block style%}{%endblock%}
+        <script type="text/javascript" src="{{STATIC_URL}}js/jquery-1.8.2.min.js"></script>
+        <script type="text/javascript" src="{{STATIC_URL}}js/demo.js"></script>
+    </head>
+    <body>
+        <header>
+            {% block encabezado%}{% endblock%}
+            <nav>
+                <ul>
+                    <li><a href="/">Inicio</a></li>
+                    <li><a href="/usuarios">Usuarios Registrado</a></li>
+                    <li><a href="/recetas">Recetas</a></li>
+                    <li><a href="/comenta">Comenta</a></li>
+                    <li><a href="/sobre">Sobre</a></li>
+                    <li><a href="/contacto">Contactanos</a></li>
+                </ul>
+            </nav>
+            <hr>
+        </header>
+        <section class="contenido">
+            {%block contenido%}{%endblock%}
+        </section>
+        <footer>
+            <p>proyecto de ejemplo para maestros del web</p>
+        </footer>
+    </body>
+</html>
